@@ -52,7 +52,7 @@ namespace SunriseSunset
 						Console.Write("Longitude: ");
 						double longitude = double.Parse(Console.ReadLine());
 						DateTime dateTime = sunsetSunrise.WhenIsSunrise(DateTime.Now, longitude);
-						Console.WriteLine(dateTime);
+						Console.WriteLine(dateTime.ToString("yyyy-MM-dd HH:mm:ss"));
 						break;
 					}
 				case 2:
@@ -60,7 +60,7 @@ namespace SunriseSunset
 						Console.Write("Longitude: ");
 						double longitude = double.Parse(Console.ReadLine());
 						DateTime dateTime = sunsetSunrise.WhenIsSunset(DateTime.Now, longitude);
-						Console.WriteLine(dateTime);
+						Console.WriteLine(dateTime.ToString("yyyy-MM-dd HH:mm:ss"));
 						break;
 					}
 				case 3:
@@ -68,7 +68,7 @@ namespace SunriseSunset
 						Console.Write("Longitude: ");
 						double longitude = double.Parse(Console.ReadLine());
 						DateTime dateTime = sunsetSunrise.HowCloseToSunrise(DateTime.Now, longitude);
-						Console.WriteLine(dateTime);
+						Console.WriteLine(dateTime.ToString("yyyy-MM-dd HH:mm:ss"));
 						break;
 					}
 				case 4:
@@ -76,7 +76,7 @@ namespace SunriseSunset
 						Console.Write("Longitude: ");
 						double longitude = double.Parse(Console.ReadLine());
 						DateTime dateTime = sunsetSunrise.HowCloseToSunset(DateTime.Now, longitude);
-						Console.WriteLine(dateTime);
+						Console.WriteLine(dateTime.ToString("yyyy-MM-dd HH:mm:ss"));
 						break;
 					}
 			}
