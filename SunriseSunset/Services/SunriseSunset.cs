@@ -53,13 +53,24 @@ namespace SunriseSunset
 			TimeSpan timeUntilSunrise = dateTime.Subtract(date);
 			if (timeUntilSunrise.Ticks < 0.0f)
 			{
-				date = date.AddDays(1);
-				return HowCloseToSunrise(date, longitude);
+				DateTime newDate = date.AddDays(1);
+				return HowCloseToSunriseRepeat(date, newDate, longitude);
 			}
 			else
 			{
 				return new DateTime() + timeUntilSunrise;
 			}
+		}
+
+		private DateTime HowCloseToSunriseRepeat(DateTime date, DateTime newDate, double longitude)
+		{
+			string uri = $"https://api.sunrise-sunset.org/json?lat=55.467270&lng=" + longitude + "&date=" + newDate.ToString("yyyy-MM-dd") + "&formatted=0";
+			RestClient restClient = new RestClient { BaseUrl = new Uri(uri) };
+			RestRequest request = new RestRequest(Method.GET);
+			IRestResponse response = restClient.Execute(request);
+			DateTime dateTime = JsonConvert.DeserializeObject<SunriseSunsetResult>(response.Content).Results.Sunrise;
+			TimeSpan timeUntilSunrise = dateTime.Subtract(date);
+			return new DateTime() + timeUntilSunrise;
 		}
 
 		public DateTime HowCloseToSunset(DateTime date, double longitude)
@@ -72,13 +83,24 @@ namespace SunriseSunset
 			TimeSpan timeUntilSunrise = dateTime.Subtract(date);
 			if (timeUntilSunrise.Ticks < 0.0f)
 			{
-				date = date.AddDays(1);
-				return HowCloseToSunrise(date, longitude);
+				DateTime newDate = date.AddDays(1);
+				return HowCloseToSunsetRepeat(date, newDate, longitude);
 			}
 			else
 			{
 				return new DateTime() + timeUntilSunrise;
 			}
+		}
+
+		private DateTime HowCloseToSunsetRepeat(DateTime date, DateTime newDate, double longitude)
+		{
+			string uri = $"https://api.sunrise-sunset.org/json?lat=55.467270&lng=" + longitude + "&date=" + newDate.ToString("yyyy-MM-dd") + "&formatted=0";
+			RestClient restClient = new RestClient { BaseUrl = new Uri(uri) };
+			RestRequest request = new RestRequest(Method.GET);
+			IRestResponse response = restClient.Execute(request);
+			DateTime dateTime = JsonConvert.DeserializeObject<SunriseSunsetResult>(response.Content).Results.Sunset;
+			TimeSpan timeUntilSunrise = dateTime.Subtract(date);
+			return new DateTime() + timeUntilSunrise;
 		}
 	}
 }

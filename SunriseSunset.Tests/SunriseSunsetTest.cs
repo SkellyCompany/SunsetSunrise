@@ -39,9 +39,9 @@ namespace SunriseSunset.Tests
         public void Get_SunriseOccured_ReturnsNextDaySunrise()
         {
             //Arrange
-            DateTime expected = DateTime.Parse("0001-01-01T00:16:36.0000000");
+            DateTime expected = DateTime.Parse("0001-01-01T08:37:07.0000000");
 
-            DateTime dateTime = DateTime.Parse("2021-04-07 20:00:00");
+            DateTime dateTime = DateTime.Parse("2021-04-07 22:00:00");
             double longitude = 8.449080;
             ISunsetSunrise sunsetSunrise = new SunriseSunset();
 
@@ -73,9 +73,9 @@ namespace SunriseSunset.Tests
 		public void Get_SunsetOccured_ReturnsNextDaySunset()
 		{
             //Arrange
-            DateTime expected = DateTime.Parse("0001-01-01T00:16:36.0000000");
+            DateTime expected = DateTime.Parse("0001-01-01T22:18:36.0000000");
 
-            DateTime dateTime = DateTime.Parse("2021-04-07 20:00:00");
+            DateTime dateTime = DateTime.Parse("2021-04-07 22:00:00");
             double longitude = 8.449080;
             ISunsetSunrise sunsetSunrise = new SunriseSunset();
 
